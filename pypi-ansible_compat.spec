@@ -4,12 +4,13 @@
 #
 Name     : pypi-ansible_compat
 Version  : 2.0.4
-Release  : 10
+Release  : 11
 URL      : https://files.pythonhosted.org/packages/37/8f/1a0168b9e03cefde8e83731f3b30e5fb2fc96a2a5d869036b6ff0d1f50b6/ansible-compat-2.0.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/37/8f/1a0168b9e03cefde8e83731f3b30e5fb2fc96a2a5d869036b6ff0d1f50b6/ansible-compat-2.0.4.tar.gz
 Summary  : Ansible compatibility goodies
 Group    : Development/Tools
 License  : MIT
+Requires: pypi-ansible_compat-filemap = %{version}-%{release}
 Requires: pypi-ansible_compat-license = %{version}-%{release}
 Requires: pypi-ansible_compat-python = %{version}-%{release}
 Requires: pypi-ansible_compat-python3 = %{version}-%{release}
@@ -33,6 +34,14 @@ BuildRequires : pypi-virtualenv
 [![gh](https://github.com/ansible-community/ansible-compat/actions/workflows/tox.yml/badge.svg)](https://github.com/ansible-community/ansible-compat/actions/workflows/tox.yml)
 [![codecov.io](https://codecov.io/github/ansible-community/ansible-compat/coverage.svg?branch=main)](https://codecov.io/github/ansible-community/ansible-compat?branch=main)
 
+%package filemap
+Summary: filemap components for the pypi-ansible_compat package.
+Group: Default
+
+%description filemap
+filemap components for the pypi-ansible_compat package.
+
+
 %package license
 Summary: license components for the pypi-ansible_compat package.
 Group: Default
@@ -53,6 +62,7 @@ python components for the pypi-ansible_compat package.
 %package python3
 Summary: python3 components for the pypi-ansible_compat package.
 Group: Default
+Requires: pypi-ansible_compat-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(ansible_compat)
 Requires: pypi(pyyaml)
@@ -65,13 +75,16 @@ python3 components for the pypi-ansible_compat package.
 %prep
 %setup -q -n ansible-compat-2.0.4
 cd %{_builddir}/ansible-compat-2.0.4
+pushd ..
+cp -a ansible-compat-2.0.4 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652735412
+export SOURCE_DATE_EPOCH=1652992736
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -82,6 +95,15 @@ export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 -m build --wheel --skip-dependency-check --no-isolation
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 -m build --wheel --skip-dependency-check --no-isolation
+
+popd
 
 %install
 export MAKEFLAGS=%{?_smp_mflags}
@@ -92,9 +114,22 @@ pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+pip install --root=%{buildroot}-v3 --no-deps --ignore-installed dist/*.whl
+popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
+
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-pypi-ansible_compat
 
 %files license
 %defattr(0644,root,root,0755)
