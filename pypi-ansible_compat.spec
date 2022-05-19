@@ -4,13 +4,12 @@
 #
 Name     : pypi-ansible_compat
 Version  : 2.0.4
-Release  : 11
+Release  : 12
 URL      : https://files.pythonhosted.org/packages/37/8f/1a0168b9e03cefde8e83731f3b30e5fb2fc96a2a5d869036b6ff0d1f50b6/ansible-compat-2.0.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/37/8f/1a0168b9e03cefde8e83731f3b30e5fb2fc96a2a5d869036b6ff0d1f50b6/ansible-compat-2.0.4.tar.gz
 Summary  : Ansible compatibility goodies
 Group    : Development/Tools
 License  : MIT
-Requires: pypi-ansible_compat-filemap = %{version}-%{release}
 Requires: pypi-ansible_compat-license = %{version}-%{release}
 Requires: pypi-ansible_compat-python = %{version}-%{release}
 Requires: pypi-ansible_compat-python3 = %{version}-%{release}
@@ -34,14 +33,6 @@ BuildRequires : pypi-virtualenv
 [![gh](https://github.com/ansible-community/ansible-compat/actions/workflows/tox.yml/badge.svg)](https://github.com/ansible-community/ansible-compat/actions/workflows/tox.yml)
 [![codecov.io](https://codecov.io/github/ansible-community/ansible-compat/coverage.svg?branch=main)](https://codecov.io/github/ansible-community/ansible-compat?branch=main)
 
-%package filemap
-Summary: filemap components for the pypi-ansible_compat package.
-Group: Default
-
-%description filemap
-filemap components for the pypi-ansible_compat package.
-
-
 %package license
 Summary: license components for the pypi-ansible_compat package.
 Group: Default
@@ -62,7 +53,6 @@ python components for the pypi-ansible_compat package.
 %package python3
 Summary: python3 components for the pypi-ansible_compat package.
 Group: Default
-Requires: pypi-ansible_compat-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(ansible_compat)
 Requires: pypi(pyyaml)
@@ -84,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652992736
+export SOURCE_DATE_EPOCH=1652994757
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -126,10 +116,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pypi-ansible_compat
 
 %files license
 %defattr(0644,root,root,0755)
