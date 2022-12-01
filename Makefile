@@ -1,5 +1,5 @@
 PKG_NAME := pypi-ansible_compat
-URL = https://files.pythonhosted.org/packages/37/1a/604884d3655a80476dff5ad3cc9991decc5fb26d3f5df51d38361c3cedb1/ansible-compat-2.2.5.tar.gz
+URL = https://files.pythonhosted.org/packages/e6/1b/ec4cab729bea3531ad4368d1b66858f9cbee5edd84a32a9830ef7da1f1d2/ansible-compat-2.2.6.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
