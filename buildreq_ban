@@ -1,2 +1,8 @@
 # This file contains build requirements that get picked up but are
 # undesirable. One entry per line, no whitespace.
+pypi(htmlmin2)
+pypi(mkdocs_ansible)
+pypi(mkdocs_material)
+pypi(mkdocs_minify_plugin)
+
+
