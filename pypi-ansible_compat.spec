@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-ansible_compat
-Version  : 4.1.7
-Release  : 34
-URL      : https://files.pythonhosted.org/packages/e1/94/d385457e10bf52c15f62884bf9474157136b2fa139df777ece420944747d/ansible-compat-4.1.7.tar.gz
-Source0  : https://files.pythonhosted.org/packages/e1/94/d385457e10bf52c15f62884bf9474157136b2fa139df777ece420944747d/ansible-compat-4.1.7.tar.gz
+Version  : 4.1.8
+Release  : 35
+URL      : https://files.pythonhosted.org/packages/aa/26/4e272378fe92ba91f92eb95528592072193b1e343472de1989a1d5692816/ansible-compat-4.1.8.tar.gz
+Source0  : https://files.pythonhosted.org/packages/aa/26/4e272378fe92ba91f92eb95528592072193b1e343472de1989a1d5692816/ansible-compat-4.1.8.tar.gz
 Summary  : Ansible compatibility goodies
 Group    : Development/Tools
 License  : MIT
@@ -42,6 +42,7 @@ BuildRequires : pypi(iniconfig)
 BuildRequires : pypi(jinja2)
 BuildRequires : pypi(jsmin)
 BuildRequires : pypi(jsonschema)
+BuildRequires : pypi(jsonschema_specifications)
 BuildRequires : pypi(markdown)
 BuildRequires : pypi(markdown_exec)
 BuildRequires : pypi(markdown_include)
@@ -69,13 +70,14 @@ BuildRequires : pypi(pycparser)
 BuildRequires : pypi(pygments)
 BuildRequires : pypi(pymdown_extensions)
 BuildRequires : pypi(pyproject_hooks)
-BuildRequires : pypi(pyrsistent)
 BuildRequires : pypi(python_dateutil)
 BuildRequires : pypi(python_slugify)
 BuildRequires : pypi(pyyaml)
 BuildRequires : pypi(pyyaml_env_tag)
+BuildRequires : pypi(referencing)
 BuildRequires : pypi(regex)
 BuildRequires : pypi(requests)
+BuildRequires : pypi(rpds_py)
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(setuptools_scm)
 BuildRequires : pypi(six)
@@ -83,7 +85,6 @@ BuildRequires : pypi(soupsieve)
 BuildRequires : pypi(subprocess_tee)
 BuildRequires : pypi(text_unidecode)
 BuildRequires : pypi(tinycss2)
-BuildRequires : pypi(toml)
 BuildRequires : pypi(tomli)
 BuildRequires : pypi(urllib3)
 BuildRequires : pypi(watchdog)
@@ -155,6 +156,7 @@ Requires: pypi(iniconfig)
 Requires: pypi(jinja2)
 Requires: pypi(jsmin)
 Requires: pypi(jsonschema)
+Requires: pypi(jsonschema_specifications)
 Requires: pypi(markdown)
 Requires: pypi(markdown_exec)
 Requires: pypi(markdown_include)
@@ -181,19 +183,19 @@ Requires: pypi(pycparser)
 Requires: pypi(pygments)
 Requires: pypi(pymdown_extensions)
 Requires: pypi(pyproject_hooks)
-Requires: pypi(pyrsistent)
 Requires: pypi(python_dateutil)
 Requires: pypi(python_slugify)
 Requires: pypi(pyyaml)
 Requires: pypi(pyyaml_env_tag)
+Requires: pypi(referencing)
 Requires: pypi(regex)
 Requires: pypi(requests)
+Requires: pypi(rpds_py)
 Requires: pypi(six)
 Requires: pypi(soupsieve)
 Requires: pypi(subprocess_tee)
 Requires: pypi(text_unidecode)
 Requires: pypi(tinycss2)
-Requires: pypi(toml)
 Requires: pypi(tomli)
 Requires: pypi(urllib3)
 Requires: pypi(watchdog)
@@ -206,10 +208,10 @@ python3 components for the pypi-ansible_compat package.
 
 
 %prep
-%setup -q -n ansible-compat-4.1.7
-cd %{_builddir}/ansible-compat-4.1.7
+%setup -q -n ansible-compat-4.1.8
+cd %{_builddir}/ansible-compat-4.1.8
 pushd ..
-cp -a ansible-compat-4.1.7 buildavx2
+cp -a ansible-compat-4.1.8 buildavx2
 popd
 
 %build
@@ -217,7 +219,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692651840
+export SOURCE_DATE_EPOCH=1693323394
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
