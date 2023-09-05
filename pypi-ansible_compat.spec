@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-ansible_compat
-Version  : 4.1.8
-Release  : 35
-URL      : https://files.pythonhosted.org/packages/aa/26/4e272378fe92ba91f92eb95528592072193b1e343472de1989a1d5692816/ansible-compat-4.1.8.tar.gz
-Source0  : https://files.pythonhosted.org/packages/aa/26/4e272378fe92ba91f92eb95528592072193b1e343472de1989a1d5692816/ansible-compat-4.1.8.tar.gz
+Version  : 4.1.9
+Release  : 36
+URL      : https://files.pythonhosted.org/packages/84/86/baefd90c3cc0e14dfd8e89088ac189d73d22a7b3eb890cde2e726e6c07ed/ansible-compat-4.1.9.tar.gz
+Source0  : https://files.pythonhosted.org/packages/84/86/baefd90c3cc0e14dfd8e89088ac189d73d22a7b3eb890cde2e726e6c07ed/ansible-compat-4.1.9.tar.gz
 Summary  : Ansible compatibility goodies
 Group    : Development/Tools
 License  : MIT
@@ -208,10 +208,10 @@ python3 components for the pypi-ansible_compat package.
 
 
 %prep
-%setup -q -n ansible-compat-4.1.8
-cd %{_builddir}/ansible-compat-4.1.8
+%setup -q -n ansible-compat-4.1.9
+cd %{_builddir}/ansible-compat-4.1.9
 pushd ..
-cp -a ansible-compat-4.1.8 buildavx2
+cp -a ansible-compat-4.1.9 buildavx2
 popd
 
 %build
@@ -219,7 +219,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693323394
+export SOURCE_DATE_EPOCH=1693949751
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
