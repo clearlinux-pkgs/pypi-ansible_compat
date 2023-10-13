@@ -5,7 +5,7 @@
 #
 Name     : pypi-ansible_compat
 Version  : 4.1.10
-Release  : 37
+Release  : 38
 URL      : https://files.pythonhosted.org/packages/36/f9/42b44473cedbf977f8fe41e2b72ea47216f708c59bafc41ad6aa93c09a71/ansible-compat-4.1.10.tar.gz
 Source0  : https://files.pythonhosted.org/packages/36/f9/42b44473cedbf977f8fe41e2b72ea47216f708c59bafc41ad6aa93c09a71/ansible-compat-4.1.10.tar.gz
 Summary  : Ansible compatibility goodies
