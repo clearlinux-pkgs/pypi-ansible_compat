@@ -7,7 +7,7 @@
 #
 Name     : pypi-ansible_compat
 Version  : 24.9.1
-Release  : 49
+Release  : 50
 URL      : https://files.pythonhosted.org/packages/30/07/f4632fc03a627b008cf6c6cd125640e332810a93a2a264c5f004979f498d/ansible_compat-24.9.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/30/07/f4632fc03a627b008cf6c6cd125640e332810a93a2a264c5f004979f498d/ansible_compat-24.9.1.tar.gz
 Summary  : Ansible compatibility goodies
