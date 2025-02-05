@@ -6,10 +6,10 @@
 # autospec commit: 94c6be0
 #
 Name     : pypi-ansible_compat
-Version  : 25.1.1
-Release  : 54
-URL      : https://files.pythonhosted.org/packages/57/ef/d7c9ce5bf5763f039403e7ecbc860ce425b88e7e62dd75418e85fcf08493/ansible_compat-25.1.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/57/ef/d7c9ce5bf5763f039403e7ecbc860ce425b88e7e62dd75418e85fcf08493/ansible_compat-25.1.1.tar.gz
+Version  : 25.1.2
+Release  : 55
+URL      : https://files.pythonhosted.org/packages/c6/6e/46a414902bc519b08d1c504e034040e2f39c240fe74a1c69b72ba33991ee/ansible_compat-25.1.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/c6/6e/46a414902bc519b08d1c504e034040e2f39c240fe74a1c69b72ba33991ee/ansible_compat-25.1.2.tar.gz
 Summary  : Ansible compatibility goodies
 Group    : Development/Tools
 License  : GPL-3.0-or-later MIT
@@ -64,13 +64,13 @@ python3 components for the pypi-ansible_compat package.
 
 
 %prep
-%setup -q -n ansible_compat-25.1.1
-cd %{_builddir}/ansible_compat-25.1.1
+%setup -q -n ansible_compat-25.1.2
+cd %{_builddir}/ansible_compat-25.1.2
 pushd ..
-cp -a ansible_compat-25.1.1 buildavx2
+cp -a ansible_compat-25.1.2 buildavx2
 popd
 pushd ..
-cp -a ansible_compat-25.1.1 buildapx
+cp -a ansible_compat-25.1.2 buildapx
 popd
 
 %build
@@ -78,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1738078328
+export SOURCE_DATE_EPOCH=1738767632
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
